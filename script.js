@@ -18,12 +18,18 @@ function loadPlaces(position) {
       &client_secret=${params.clientSecret}
       &limit=30 
       &v=${params.version}`;
-  return fetch(endpoint)
+      return fetch(endpoint)
       .then((res) => {
-          return res.json()
-              .then((resp) => {
-                  return resp.response.venues;
-              })
+          // Check if the response is successful
+          if (!res.ok) {
+              throw new Error('Network response was not ok');
+          }
+          return res.json();
+      })
+      .then((resp) => {
+          // Alert to confirm the API request is working with the client ID
+          alert('API request is working with the client ID');
+          return resp.response.venues;
       })
       .catch((err) => {
           console.error('Error with places API', err);
