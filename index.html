@@ -9,6 +9,22 @@
         <script src="https://rawgit.com/jeromeetienne/AR.js/2.0.8/aframe/build/aframe-ar.js"></script>
     </head>
     <body style="margin: 0; overflow: hidden;">
+            <script>
+        function checkFileExists(url) {
+            var http = new XMLHttpRequest();
+            http.open('HEAD', url, false);
+            http.send();
+            return http.status != 404;
+        }
+
+        var fileUrl = '../assets/stairs.gltf';
+        var fileExists = checkFileExists(fileUrl);
+        if (fileExists) {
+            alert('File exists!');
+        } else {
+            alert('File does not exist!');
+        }</script>
+
         <a-scene embedded arjs="sourceType: webcam;">
             <a-assets>
                 <a-asset-item id="model" src="../assets/stairs.gltf"></a-asset-item>
@@ -19,4 +35,6 @@
             <a-entity camera></a-entity>
         </a-scene>
     </body>
+
+   
 </html>
