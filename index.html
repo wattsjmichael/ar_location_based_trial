@@ -8,12 +8,12 @@
 </head>
 <body style="margin: 0; overflow: hidden;">
 
-    <a-scene embedded arjs="sourceType: mobile;">
+    <a-scene embedded arjs="sourceType: webcam;">
         <a-assets>
             <a-asset-item id="model" src="stairs.gltf"></a-asset-item>
         </a-assets>
         <a-entity id="modelContainer" gesture-detector gesture-handler="pinchEvent: gesture-pinch; rotateEvent: gesture-rotate; dragEvent: gesture-drag"
-                  scale="1.5 1.5 1.5" rotation="0 0 0" position="0 0 0">
+                  scale="2.5 2.5 2.5" rotation="0 0 0" position="0 0 0">
             <a-entity gltf-model="#model"></a-entity>
         </a-entity>
         <a-entity camera></a-entity>
@@ -21,7 +21,6 @@
 
     <script>
         document.getElementById('modelContainer').addEventListener('gesture-drag', function (event) {
-            alert('Drag gesture detected!');
             const {position} = this.getAttribute('position');
             position.x += event.detail.positionChange.x;
             position.y += event.detail.positionChange.y;
@@ -30,7 +29,6 @@
         });
 
         document.getElementById('modelContainer').addEventListener('gesture-pinch', function (event) {
-            alert('Pinch gesture detected!');
             const {scale} = this.getAttribute('scale');
             scale.x *= event.detail.scaleChange;
             scale.y *= event.detail.scaleChange;
@@ -39,7 +37,6 @@
         });
 
         document.getElementById('modelContainer').addEventListener('gesture-rotate', function (event) {
-            alert('Rotate gesture detected!');
             const {rotation} = this.getAttribute('rotation');
             rotation.y += event.detail.rotationChange.y;
             this.setAttribute('rotation', rotation);
