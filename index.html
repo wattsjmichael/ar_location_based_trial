@@ -21,6 +21,7 @@
 
     <script>
         document.getElementById('modelContainer').addEventListener('gesture-drag', function (event) {
+            alert('Drag gesture detected!');
             const {position} = this.getAttribute('position');
             position.x += event.detail.positionChange.x;
             position.y += event.detail.positionChange.y;
@@ -29,6 +30,7 @@
         });
 
         document.getElementById('modelContainer').addEventListener('gesture-pinch', function (event) {
+            alert('Pinch gesture detected!');
             const {scale} = this.getAttribute('scale');
             scale.x *= event.detail.scaleChange;
             scale.y *= event.detail.scaleChange;
@@ -37,6 +39,7 @@
         });
 
         document.getElementById('modelContainer').addEventListener('gesture-rotate', function (event) {
+            alert('Rotate gesture detected!');
             const {rotation} = this.getAttribute('rotation');
             rotation.y += event.detail.rotationChange.y;
             this.setAttribute('rotation', rotation);
