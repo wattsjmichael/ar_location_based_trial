@@ -18,7 +18,7 @@
             http.send();
         }
 
-        var fileUrl = '../assets/stairs.gltf';
+        var fileUrl = './assets/stairs.gltf';
         checkFileExists(fileUrl, function(fileExists) {
             if (fileExists) {
                 alert('File exists!');
@@ -30,9 +30,9 @@
 
     <a-scene embedded arjs="sourceType: webcam;">
         <a-assets>
-            <a-asset-item id="model" src="../assets/stairs.gltf"></a-asset-item>
+            <a-asset-item id="model" src="./assets/stairs.gltf"></a-asset-item>
         </a-assets>
-        <a-marker type="image" url="../assets/qr-code.png">
+        <a-marker type="image" url="./assets/qr-code.png">
             <a-entity gltf-model="#model"></a-entity>
         </a-marker>
         <a-entity camera></a-entity>
